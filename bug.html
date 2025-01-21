@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Error</title>
+</head>
+<body>
+  <p>This is a paragraph.</p>
+  <div id="myDiv">
+    <p>This paragraph is inside a div.</p>
+  </div>
+  <script>
+    // This is where the bug usually appears due to unexpected behavior
+    document.getElementById('myDiv').style.display = "none"; // Hide the div
+    document.getElementById('myDiv').innerHTML = ""; // Delete the content of the div (problematic)
+    // The innerHTML approach does not remove the div from the DOM tree. It just clears the content but this element still exists
+    // So any subsequent attempts to manipulate the div element will likely succeed, leading to unexpected behavior.
+  </script>
+</body>
+</html>
